@@ -26,6 +26,16 @@ export default function LandingPage() {
   });
   const [registerSubmitted, setRegisterSubmitted] = useState(false);
 
+  const handleNavClick = (e: React.MouseEvent, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      const yOffset = -80; // height of sticky header
+      const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -69,9 +79,35 @@ export default function LandingPage() {
     if (registerStep > 1) setRegisterStep((s) => s - 1);
   };
 
-  const handleRegisterSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleRegisterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setRegisterSubmitted(true);
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(registerFormData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        toast.success('Registration completed successfully!');
+        setRegisterSubmitted(true);
+      } else {
+        toast.error(result.error || 'Failed to submit registration. Please try again.');
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error('An error occurred. Please check your connection and try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const closeRegisterModal = () => {
@@ -138,11 +174,11 @@ export default function LandingPage() {
 
           {/* Desktop Navigation */}
           <div style={{ display: 'flex', gap: '32px', alignItems: 'center' }} className="desktop-menu">
-            <Link href="#about" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '14px', fontWeight: 500, transition: 'color var(--transition-fast)' }}>About</Link>
-            <Link href="#speakers" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '14px', fontWeight: 500, transition: 'color var(--transition-fast)' }}>Speakers</Link>
-            <Link href="#highlights" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '14px', fontWeight: 500, transition: 'color var(--transition-fast)' }}>Highlights</Link>
-            <Link href="#who" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '14px', fontWeight: 500, transition: 'color var(--transition-fast)' }}>Who Should Attend</Link>
-            <Link href="#organized-by" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '14px', fontWeight: 500, transition: 'color var(--transition-fast)' }}>Organized By</Link>
+            <a href="#about" onClick={(e) => handleNavClick(e, 'about')} style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '14px', fontWeight: 500, transition: 'color var(--transition-fast)' }}>About</a>
+            <a href="#speakers" onClick={(e) => handleNavClick(e, 'speakers')} style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '14px', fontWeight: 500, transition: 'color var(--transition-fast)' }}>Speakers</a>
+            <a href="#highlights" onClick={(e) => handleNavClick(e, 'highlights')} style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '14px', fontWeight: 500, transition: 'color var(--transition-fast)' }}>Highlights</a>
+            <a href="#who" onClick={(e) => handleNavClick(e, 'who')} style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '14px', fontWeight: 500, transition: 'color var(--transition-fast)' }}>Who Should Attend</a>
+            <a href="#organized-by" onClick={(e) => handleNavClick(e, 'organized-by')} style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '14px', fontWeight: 500, transition: 'color var(--transition-fast)' }}>Organized By</a>
             <button onClick={() => setIsRegisterModalOpen(true)} className="btn btn-primary" style={{ padding: '8px 20px', fontSize: '13px' }}>Register Now</button>
           </div>
 
@@ -167,11 +203,11 @@ export default function LandingPage() {
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
         <div className="mobile-nav-overlay fade-in">
-          <Link href="#about" onClick={() => setMobileMenuOpen(false)} style={{ color: 'var(--text-primary)', fontSize: '20px', fontWeight: 600, textDecoration: 'none' }}>About</Link>
-          <Link href="#speakers" onClick={() => setMobileMenuOpen(false)} style={{ color: 'var(--text-primary)', fontSize: '20px', fontWeight: 600, textDecoration: 'none' }}>Speakers</Link>
-          <Link href="#highlights" onClick={() => setMobileMenuOpen(false)} style={{ color: 'var(--text-primary)', fontSize: '20px', fontWeight: 600, textDecoration: 'none' }}>Highlights</Link>
-          <Link href="#who" onClick={() => setMobileMenuOpen(false)} style={{ color: 'var(--text-primary)', fontSize: '20px', fontWeight: 600, textDecoration: 'none' }}>Who Should Attend</Link>
-          <Link href="#organized-by" onClick={() => setMobileMenuOpen(false)} style={{ color: 'var(--text-primary)', fontSize: '20px', fontWeight: 600, textDecoration: 'none' }}>Organized By</Link>
+          <a href="#about" onClick={(e) => { setMobileMenuOpen(false); handleNavClick(e, 'about'); }} style={{ color: 'var(--text-primary)', fontSize: '20px', fontWeight: 600, textDecoration: 'none' }}>About</a>
+          <a href="#speakers" onClick={(e) => { setMobileMenuOpen(false); handleNavClick(e, 'speakers'); }} style={{ color: 'var(--text-primary)', fontSize: '20px', fontWeight: 600, textDecoration: 'none' }}>Speakers</a>
+          <a href="#highlights" onClick={(e) => { setMobileMenuOpen(false); handleNavClick(e, 'highlights'); }} style={{ color: 'var(--text-primary)', fontSize: '20px', fontWeight: 600, textDecoration: 'none' }}>Highlights</a>
+          <a href="#who" onClick={(e) => { setMobileMenuOpen(false); handleNavClick(e, 'who'); }} style={{ color: 'var(--text-primary)', fontSize: '20px', fontWeight: 600, textDecoration: 'none' }}>Who Should Attend</a>
+          <a href="#organized-by" onClick={(e) => { setMobileMenuOpen(false); handleNavClick(e, 'organized-by'); }} style={{ color: 'var(--text-primary)', fontSize: '20px', fontWeight: 600, textDecoration: 'none' }}>Organized By</a>
           <button
             onClick={() => { setMobileMenuOpen(false); setIsRegisterModalOpen(true); }}
             className="btn btn-primary"
@@ -252,9 +288,9 @@ export default function LandingPage() {
             <button onClick={() => setIsRegisterModalOpen(true)} className="btn btn-gold">
               Register Now
             </button>
-            <Link href="#about" className="btn btn-secondary">
+            <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="btn btn-secondary">
               Conference Details
-            </Link>
+            </a>
           </div>
 
           {/* Quick Info Grid */}
@@ -367,7 +403,7 @@ export default function LandingPage() {
             }}
           >
             {/* Speaker 1 */}
-            <div className="glass-card" style={{ flex: '1 1 350px', maxWidth: '450px', textAlign: 'center', padding: '40px 32px' }}>
+            <div className="glass-card" style={{ flex: '1 1 300px', maxWidth: '450px', textAlign: 'center', padding: '40px 32px' }}>
               <div 
                 style={{ 
                   width: '120px', 
@@ -380,7 +416,7 @@ export default function LandingPage() {
                   justifyContent: 'center',
                   fontSize: '36px',
                   fontWeight: 800,
-                  color: 'var(--text-primary)',
+                  color: 'white',
                   boxShadow: '0 8px 24px rgba(79, 70, 229, 0.2)'
                 }}
               >
@@ -396,27 +432,27 @@ export default function LandingPage() {
             </div>
 
             {/* Speaker 2 */}
-            <div className="glass-card" style={{ flex: '1 1 350px', maxWidth: '450px', textAlign: 'center', padding: '40px 32px' }}>
+            <div className="glass-card" style={{ flex: '1 1 300px', maxWidth: '450px', textAlign: 'center', padding: '40px 32px' }}>
               <div 
                 style={{ 
                   width: '120px', 
                   height: '120px', 
                   borderRadius: '50%', 
-                  background: 'linear-gradient(135deg, var(--color-secondary), var(--color-accent-blue))', 
+                  background: 'linear-gradient(135deg, var(--color-primary), var(--color-accent-blue))', 
                   margin: '0 auto 24px auto',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   fontSize: '36px',
                   fontWeight: 800,
-                  color: 'var(--text-primary)',
-                  boxShadow: '0 8px 24px rgba(245, 158, 11, 0.2)'
+                  color: 'white',
+                  boxShadow: '0 8px 24px rgba(8, 145, 178, 0.2)'
                 }}
               >
                 RD
               </div>
               <h3 style={{ fontSize: '24px', color: 'var(--text-primary)', marginBottom: '8px' }}>Dr. Rajesh Duthie</h3>
-              <div style={{ color: 'var(--color-accent-blue)', fontFamily: 'var(--font-mono)', fontSize: '13px', fontWeight: 600, marginBottom: '20px' }}>
+              <div style={{ color: 'var(--color-primary)', fontFamily: 'var(--font-mono)', fontSize: '13px', fontWeight: 600, marginBottom: '20px' }}>
                 LEADERSHIP COACH
               </div>
               <p style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: 1.6 }}>
@@ -697,9 +733,9 @@ export default function LandingPage() {
             <div>
               <h4 style={{ color: 'var(--text-primary)', fontSize: '14px', marginBottom: '16px', textTransform: 'uppercase', fontFamily: 'var(--font-mono)' }}>Links</h4>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '13px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <li><Link href="#about" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>About</Link></li>
-                <li><Link href="#speakers" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>Speakers</Link></li>
-                <li><Link href="#highlights" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>Highlights</Link></li>
+                <li><a href="#about" onClick={(e) => handleNavClick(e, 'about')} style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>About</a></li>
+                <li><a href="#speakers" onClick={(e) => handleNavClick(e, 'speakers')} style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>Speakers</a></li>
+                <li><a href="#highlights" onClick={(e) => handleNavClick(e, 'highlights')} style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>Highlights</a></li>
                 <li>
                   <button 
                     onClick={() => setIsRegisterModalOpen(true)} 
@@ -1083,8 +1119,8 @@ export default function LandingPage() {
                         Next Step
                       </button>
                     ) : (
-                      <button type="submit" className="btn btn-gold" style={{ padding: '8px 20px', fontSize: '13px' }}>
-                        Complete Registration
+                      <button type="submit" disabled={isSubmitting} className="btn btn-gold" style={{ padding: '8px 20px', fontSize: '13px', opacity: isSubmitting ? 0.7 : 1, cursor: isSubmitting ? 'not-allowed' : 'pointer' }}>
+                        {isSubmitting ? 'Submitting...' : 'Complete Registration'}
                       </button>
                     )}
                   </div>
