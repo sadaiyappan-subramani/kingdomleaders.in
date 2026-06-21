@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import '@kingdomleaders/ui/src/styles/theme.css';
+import '../../../packages/ui/src/styles/theme.css';
 import './global.css';
 
 export const metadata: Metadata = {
