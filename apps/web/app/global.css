@@ -103,7 +103,10 @@ h3 {
   border: 1px solid var(--border-color);
   background: var(--bg-secondary);
   border-radius: var(--radius-md);
-  padding: 32px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   transition: all var(--transition-normal);
 }
 
@@ -118,6 +121,7 @@ h3 {
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--transition-normal);
+  z-index: 2;
 }
 
 .feature-card:hover {
@@ -129,6 +133,32 @@ h3 {
 
 .feature-card:hover::before {
   transform: scaleX(1);
+}
+
+.feature-card-img-container {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.feature-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow) ease;
+}
+
+.feature-card:hover .feature-card-img {
+  transform: scale(1.08);
+}
+
+.feature-card-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 /* Input Fields */
@@ -161,4 +191,51 @@ h3 {
 
 .form-group {
   margin-bottom: 20px;
+}
+
+/* Audience Card Styles */
+.audience-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 28px 20px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  border-radius: var(--radius-md);
+  height: 100%;
+  transition: all var(--transition-normal);
+}
+
+.audience-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-secondary);
+  box-shadow: 0 16px 30px -10px rgba(245, 158, 11, 0.15);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.audience-card-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 16px;
+  border: 3px solid var(--bg-secondary);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: all var(--transition-normal) ease;
+}
+
+.audience-card:hover .audience-card-avatar {
+  transform: scale(1.08);
+  border-color: var(--color-secondary);
+  box-shadow: 0 8px 16px rgba(245, 158, 11, 0.15);
+}
+
+.audience-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

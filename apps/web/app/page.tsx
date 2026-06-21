@@ -491,20 +491,29 @@ export default function LandingPage() {
             }}
           >
             {[
-              { title: 'Biblical Leadership Principles', desc: 'Grounded strategies based directly on scripture.' },
-              { title: 'Vision Casting for Ministry', desc: 'Learn how to articulate and lead with clear, inspired vision.' },
-              { title: 'Servant Leadership & Team Building', desc: 'Foster collaborative and humble leadership environments.' },
-              { title: 'Mentorship and Discipleship', desc: 'Practical models for training and discipling others.' },
-              { title: 'Youth & Church Ministry Development', desc: 'Strategies for engaging and developing the next generation.' },
-              { title: 'Interactive Learning Sessions', desc: 'Participate in hands-on workshops and roundtables.' },
-              { title: 'Networking with Christian Leaders', desc: 'Connect, share ideas, and build strategic partnerships.' },
-              { title: 'Prayer, Worship & Spiritual Renewal', desc: 'Dedicated times for seeking God and being spiritually refreshed.' }
+              { title: 'Biblical Leadership Principles', desc: 'Grounded strategies based directly on scripture.', image: '/images/biblical_leadership.png' },
+              { title: 'Vision Casting for Ministry', desc: 'Learn how to articulate and lead with clear, inspired vision.', image: '/images/vision_casting.png' },
+              { title: 'Servant Leadership & Team Building', desc: 'Foster collaborative and humble leadership environments.', image: '/images/servant_leadership.png' },
+              { title: 'Mentorship and Discipleship', desc: 'Practical models for training and discipling others.', image: '/images/mentorship.png' },
+              { title: 'Youth & Church Ministry Development', desc: 'Strategies for engaging and developing the next generation.', image: '/images/youth_ministry.png' },
+              { title: 'Interactive Learning Sessions', desc: 'Participate in hands-on workshops and roundtables.', image: '/images/interactive_sessions.png' },
+              { title: 'Networking with Christian Leaders', desc: 'Connect, share ideas, and build strategic partnerships.', image: '/images/networking.png' },
+              { title: 'Prayer, Worship & Spiritual Renewal', desc: 'Dedicated times for seeking God and being spiritually refreshed.', image: '/images/prayer_renewal.png' }
             ].map((highlight, index) => (
               <div className="feature-card" key={index}>
-                <h3 style={{ fontSize: '18px', marginBottom: '8px', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ color: 'var(--color-secondary)' }}>✦</span> {highlight.title}
-                </h3>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '13px', lineHeight: 1.6 }}>{highlight.desc}</p>
+                <div className="feature-card-img-container">
+                  <img 
+                    src={highlight.image} 
+                    alt={highlight.title} 
+                    className="feature-card-img"
+                  />
+                </div>
+                <div className="feature-card-content">
+                  <h3 style={{ fontSize: '18px', marginBottom: '8px', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span style={{ color: 'var(--color-secondary)' }}>✦</span> {highlight.title}
+                  </h3>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '13px', lineHeight: 1.6 }}>{highlight.desc}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -539,29 +548,24 @@ export default function LandingPage() {
             }}
           >
             {[
-              'Pastors & Evangelists',
-              'Church Elders & Coordinators',
-              'Christian Endeavour Leaders',
-              'Youth & Student Leaders',
-              'Sunday School Teachers',
-              'Small Group Facilitators',
-              'Ministry Volunteers',
-              'Emerging Christian Leaders'
+              { name: 'Pastors & Evangelists', image: '/images/pastors_evangelists.png' },
+              { name: 'Church Elders & Coordinators', image: '/images/church_elders.png' },
+              { name: 'Christian Endeavour Leaders', image: '/images/ce_leaders.png' },
+              { name: 'Youth & Student Leaders', image: '/images/youth_student_leaders.png' },
+              { name: 'Sunday School Teachers', image: '/images/sunday_school.png' },
+              { name: 'Small Group Facilitators', image: '/images/small_groups.png' },
+              { name: 'Ministry Volunteers', image: '/images/ministry_volunteers.png' },
+              { name: 'Emerging Christian Leaders', image: '/images/emerging_leaders.png' }
             ].map((role, idx) => (
-              <div 
-                className="glass-card" 
-                key={idx} 
-                style={{ 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  justifyContent: 'center', 
-                  textAlign: 'center',
-                  padding: '24px 16px',
-                  border: '1px solid var(--border-color)',
-                  height: '100%'
-                }}
-              >
-                <h3 style={{ fontSize: '16px', fontWeight: 600, color: 'var(--text-primary)' }}>{role}</h3>
+              <div className="audience-card" key={idx}>
+                <div className="audience-card-avatar">
+                  <img 
+                    src={role.image} 
+                    alt={role.name} 
+                    className="audience-card-img"
+                  />
+                </div>
+                <h3 style={{ fontSize: '16px', fontWeight: 600, color: 'var(--text-primary)' }}>{role.name}</h3>
               </div>
             ))}
           </div>
