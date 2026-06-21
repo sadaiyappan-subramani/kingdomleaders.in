@@ -42,7 +42,7 @@ export default function LandingPage() {
           zIndex: 50,
           borderBottom: '1px solid var(--border-color)',
           transition: 'background var(--transition-normal), backdrop-filter var(--transition-normal)',
-          background: scrolled ? 'rgba(11, 15, 25, 0.85)' : 'rgba(11, 15, 25, 0.4)',
+          background: scrolled ? 'rgba(255, 255, 255, 0.85)' : 'rgba(255, 255, 255, 0.4)',
           backdropFilter: scrolled ? 'blur(16px)' : 'blur(4px)',
         }}
       >
@@ -53,7 +53,7 @@ export default function LandingPage() {
                 fontFamily: 'var(--font-heading)',
                 fontSize: '22px',
                 fontWeight: 800,
-                color: 'white',
+                color: 'var(--text-primary)',
                 letterSpacing: '0.05em',
               }}
             >
@@ -79,7 +79,7 @@ export default function LandingPage() {
               background: 'none',
               border: 'none',
               cursor: 'pointer',
-              color: 'white',
+              color: 'var(--text-primary)',
               fontSize: '24px',
             }}
             className="mobile-menu-btn"
@@ -92,11 +92,11 @@ export default function LandingPage() {
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
         <div className="mobile-nav-overlay fade-in">
-          <Link href="#about" onClick={() => setMobileMenuOpen(false)} style={{ color: 'white', fontSize: '20px', fontWeight: 600, textDecoration: 'none' }}>About</Link>
-          <Link href="#speakers" onClick={() => setMobileMenuOpen(false)} style={{ color: 'white', fontSize: '20px', fontWeight: 600, textDecoration: 'none' }}>Speakers</Link>
-          <Link href="#highlights" onClick={() => setMobileMenuOpen(false)} style={{ color: 'white', fontSize: '20px', fontWeight: 600, textDecoration: 'none' }}>Highlights</Link>
-          <Link href="#who" onClick={() => setMobileMenuOpen(false)} style={{ color: 'white', fontSize: '20px', fontWeight: 600, textDecoration: 'none' }}>Who Should Attend</Link>
-          <Link href="#organized-by" onClick={() => setMobileMenuOpen(false)} style={{ color: 'white', fontSize: '20px', fontWeight: 600, textDecoration: 'none' }}>Organized By</Link>
+          <Link href="#about" onClick={() => setMobileMenuOpen(false)} style={{ color: 'var(--text-primary)', fontSize: '20px', fontWeight: 600, textDecoration: 'none' }}>About</Link>
+          <Link href="#speakers" onClick={() => setMobileMenuOpen(false)} style={{ color: 'var(--text-primary)', fontSize: '20px', fontWeight: 600, textDecoration: 'none' }}>Speakers</Link>
+          <Link href="#highlights" onClick={() => setMobileMenuOpen(false)} style={{ color: 'var(--text-primary)', fontSize: '20px', fontWeight: 600, textDecoration: 'none' }}>Highlights</Link>
+          <Link href="#who" onClick={() => setMobileMenuOpen(false)} style={{ color: 'var(--text-primary)', fontSize: '20px', fontWeight: 600, textDecoration: 'none' }}>Who Should Attend</Link>
+          <Link href="#organized-by" onClick={() => setMobileMenuOpen(false)} style={{ color: 'var(--text-primary)', fontSize: '20px', fontWeight: 600, textDecoration: 'none' }}>Organized By</Link>
           <Link
             href="/register"
             onClick={() => setMobileMenuOpen(false)}
@@ -166,7 +166,7 @@ export default function LandingPage() {
               textAlign: 'left'
             }}
           >
-            <p style={{ color: 'white', fontSize: '15px', fontStyle: 'italic', margin: 0 }}>
+            <p style={{ color: 'var(--text-primary)', fontSize: '15px', fontStyle: 'italic', margin: 0 }}>
               "Whoever wants to become great among you must be your servant."
             </p>
             <p style={{ color: 'var(--color-secondary)', fontSize: '13px', fontWeight: 600, margin: '8px 0 0 0', fontFamily: 'var(--font-mono)' }}>
@@ -194,25 +194,25 @@ export default function LandingPage() {
           >
             <div className="glass-card" style={{ textAlign: 'left' }}>
               <div style={{ color: 'var(--text-muted)', fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', fontFamily: 'var(--font-mono)', marginBottom: '8px' }}>Date</div>
-              <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'white', marginBottom: '4px' }}>Wed, 26 Aug 2026</h3>
+              <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '4px' }}>Wed, 26 Aug 2026</h3>
               <p style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>Wednesday Gathering</p>
             </div>
 
             <div className="glass-card" style={{ textAlign: 'left' }}>
               <div style={{ color: 'var(--text-muted)', fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', fontFamily: 'var(--font-mono)', marginBottom: '8px' }}>Time</div>
-              <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'white', marginBottom: '4px' }}>9:30 AM – 4:00 PM</h3>
+              <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '4px' }}>9:30 AM – 4:00 PM</h3>
               <p style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>Full Day Interactive Session</p>
             </div>
 
             <div className="glass-card" style={{ textAlign: 'left' }}>
               <div style={{ color: 'var(--text-muted)', fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', fontFamily: 'var(--font-mono)', marginBottom: '8px' }}>Capacity</div>
-              <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'white', marginBottom: '4px' }}>Limited to 150</h3>
+              <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '4px' }}>Limited to 150</h3>
               <p style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>Exclusive Leadership Seats</p>
             </div>
 
             <div className="glass-card" style={{ textAlign: 'left' }}>
               <div style={{ color: 'var(--text-muted)', fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', fontFamily: 'var(--font-mono)', marginBottom: '8px' }}>Venue</div>
-              <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'white', marginBottom: '4px' }}>Palpanabanouthoor</h3>
+              <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '4px' }}>Palpanabanouthoor</h3>
               <p style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>C.S.I. Church</p>
             </div>
           </div>
@@ -246,7 +246,7 @@ export default function LandingPage() {
               <p style={{ color: 'var(--text-secondary)', fontSize: '16px', marginBottom: '20px', lineHeight: 1.7 }}>
                 Kingdom Leaders 2026 is a one-day leadership conference dedicated to inspiring, equipping, and connecting Christian leaders for faithful and impactful ministry. This gathering seeks to strengthen pastors, church leaders, youth leaders, Christian Endeavour members, and ministry volunteers through biblical teaching, practical leadership principles, and Christ-centered fellowship.
               </p>
-              <p style={{ color: 'white', fontSize: '16px', fontWeight: 600, lineHeight: 1.7 }}>
+              <p style={{ color: 'var(--text-primary)', fontSize: '16px', fontWeight: 600, lineHeight: 1.7 }}>
                 Whether you are serving in your local church, mentoring young people, or leading a ministry team, this conference is designed to encourage you to lead with vision, humility, and Kingdom purpose.
               </p>
             </div>
@@ -306,13 +306,13 @@ export default function LandingPage() {
                   justifyContent: 'center',
                   fontSize: '36px',
                   fontWeight: 800,
-                  color: 'white',
+                  color: 'var(--text-primary)',
                   boxShadow: '0 8px 24px rgba(79, 70, 229, 0.2)'
                 }}
               >
                 CJ
               </div>
-              <h3 style={{ fontSize: '24px', color: 'white', marginBottom: '8px' }}>Dr. Christy Jacob</h3>
+              <h3 style={{ fontSize: '24px', color: 'var(--text-primary)', marginBottom: '8px' }}>Dr. Christy Jacob</h3>
               <div style={{ color: 'var(--color-secondary)', fontFamily: 'var(--font-mono)', fontSize: '13px', fontWeight: 600, marginBottom: '20px' }}>
                 LEADERSHIP TRAINER
               </div>
@@ -335,13 +335,13 @@ export default function LandingPage() {
                   justifyContent: 'center',
                   fontSize: '36px',
                   fontWeight: 800,
-                  color: 'white',
+                  color: 'var(--text-primary)',
                   boxShadow: '0 8px 24px rgba(245, 158, 11, 0.2)'
                 }}
               >
                 RD
               </div>
-              <h3 style={{ fontSize: '24px', color: 'white', marginBottom: '8px' }}>Dr. Rajesh Duthie</h3>
+              <h3 style={{ fontSize: '24px', color: 'var(--text-primary)', marginBottom: '8px' }}>Dr. Rajesh Duthie</h3>
               <div style={{ color: 'var(--color-accent-blue)', fontFamily: 'var(--font-mono)', fontSize: '13px', fontWeight: 600, marginBottom: '20px' }}>
                 LEADERSHIP COACH
               </div>
@@ -391,7 +391,7 @@ export default function LandingPage() {
               { title: 'Prayer, Worship & Spiritual Renewal', desc: 'Dedicated times for seeking God and being spiritually refreshed.' }
             ].map((highlight, index) => (
               <div className="feature-card" key={index}>
-                <h3 style={{ fontSize: '18px', marginBottom: '8px', color: 'white', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <h3 style={{ fontSize: '18px', marginBottom: '8px', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <span style={{ color: 'var(--color-secondary)' }}>✦</span> {highlight.title}
                 </h3>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '13px', lineHeight: 1.6 }}>{highlight.desc}</p>
@@ -451,7 +451,7 @@ export default function LandingPage() {
                   height: '100%'
                 }}
               >
-                <h3 style={{ fontSize: '16px', fontWeight: 600, color: 'white' }}>{role}</h3>
+                <h3 style={{ fontSize: '16px', fontWeight: 600, color: 'var(--text-primary)' }}>{role}</h3>
               </div>
             ))}
           </div>
@@ -485,7 +485,7 @@ export default function LandingPage() {
               <p style={{ color: 'var(--text-secondary)', fontSize: '16px', lineHeight: 1.7, marginBottom: '20px' }}>
                 The Christian Endeavour Social Concern Team is committed to equipping believers through leadership development, community engagement, discipleship, and biblical training.
               </p>
-              <p style={{ color: 'white', fontSize: '16px', fontWeight: 600, lineHeight: 1.7 }}>
+              <p style={{ color: 'var(--text-primary)', fontSize: '16px', fontWeight: 600, lineHeight: 1.7 }}>
                 Kingdom Leaders 2026 is a strategic initiative to develop servant leaders who will faithfully lead churches, mentor the next generation, and impact society for Christ.
               </p>
             </div>
@@ -509,7 +509,7 @@ export default function LandingPage() {
           >
             OUR VISION
           </div>
-          <h2 style={{ fontSize: '36px', marginBottom: '24px', color: 'white' }}>To Raise Christ-Centered Leaders</h2>
+          <h2 style={{ fontSize: '36px', marginBottom: '24px', color: 'var(--text-primary)' }}>To Raise Christ-Centered Leaders</h2>
           <p style={{ color: 'var(--text-secondary)', fontSize: '18px', lineHeight: 1.8 }}>
             To raise Christ-centered leaders who lead with integrity, serve with humility, disciple the next generation, and advance God's Kingdom in every sphere of society.
           </p>
@@ -541,7 +541,7 @@ export default function LandingPage() {
           >
             150 Leaders
           </h2>
-          <h3 style={{ fontSize: '24px', color: 'white', marginBottom: '32px' }}>Seats Available</h3>
+          <h3 style={{ fontSize: '24px', color: 'var(--text-primary)', marginBottom: '32px' }}>Seats Available</h3>
           
           <div
             className="glass-card"
@@ -553,7 +553,7 @@ export default function LandingPage() {
               boxShadow: '0 20px 50px -20px rgba(245, 158, 11, 0.1)',
             }}
           >
-            <h3 style={{ fontSize: '24px', color: 'white', marginBottom: '12px' }}>Be Equipped. Be Empowered. Be a Kingdom Leader.</h3>
+            <h3 style={{ fontSize: '24px', color: 'var(--text-primary)', marginBottom: '12px' }}>Be Equipped. Be Empowered. Be a Kingdom Leader.</h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: '15px', marginBottom: '24px' }}>
               Seats are limited to only 150 leaders. Early registration is highly recommended to secure your participation in this exclusive leadership gathering.
             </p>
@@ -568,7 +568,7 @@ export default function LandingPage() {
       <footer
         style={{
           padding: '60px 0 30px 0',
-          backgroundColor: '#070a12',
+          backgroundColor: 'var(--bg-tertiary)',
           borderTop: '1px solid var(--border-color)',
           color: 'var(--text-secondary)',
           position: 'relative',
@@ -586,7 +586,7 @@ export default function LandingPage() {
           >
             {/* Branding Column */}
             <div>
-              <span style={{ fontFamily: 'var(--font-heading)', fontSize: '20px', fontWeight: 800, color: 'white', letterSpacing: '0.05em' }}>
+              <span style={{ fontFamily: 'var(--font-heading)', fontSize: '20px', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '0.05em' }}>
                 KINGDOM<span style={{ color: 'var(--color-secondary)' }}>LEADERS</span>
               </span>
               <p style={{ fontSize: '13px', marginTop: '16px', lineHeight: 1.6 }}>
@@ -596,7 +596,7 @@ export default function LandingPage() {
 
             {/* Event Details Column */}
             <div>
-              <h4 style={{ color: 'white', fontSize: '14px', marginBottom: '16px', textTransform: 'uppercase', fontFamily: 'var(--font-mono)' }}>Event Details</h4>
+              <h4 style={{ color: 'var(--text-primary)', fontSize: '14px', marginBottom: '16px', textTransform: 'uppercase', fontFamily: 'var(--font-mono)' }}>Event Details</h4>
               <p style={{ fontSize: '13px', marginBottom: '10px' }}>
                 📅 Wednesday, 26 August 2026
               </p>
@@ -610,7 +610,7 @@ export default function LandingPage() {
 
             {/* Organized By Column */}
             <div>
-              <h4 style={{ color: 'white', fontSize: '14px', marginBottom: '16px', textTransform: 'uppercase', fontFamily: 'var(--font-mono)' }}>Organized By</h4>
+              <h4 style={{ color: 'var(--text-primary)', fontSize: '14px', marginBottom: '16px', textTransform: 'uppercase', fontFamily: 'var(--font-mono)' }}>Organized By</h4>
               <p style={{ fontSize: '13px', marginBottom: '10px' }}>
                 Christian Endeavour Social Concern Team
               </p>
@@ -621,7 +621,7 @@ export default function LandingPage() {
 
             {/* Navigation Column */}
             <div>
-              <h4 style={{ color: 'white', fontSize: '14px', marginBottom: '16px', textTransform: 'uppercase', fontFamily: 'var(--font-mono)' }}>Links</h4>
+              <h4 style={{ color: 'var(--text-primary)', fontSize: '14px', marginBottom: '16px', textTransform: 'uppercase', fontFamily: 'var(--font-mono)' }}>Links</h4>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '13px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 <li><Link href="#about" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>About</Link></li>
                 <li><Link href="#speakers" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>Speakers</Link></li>

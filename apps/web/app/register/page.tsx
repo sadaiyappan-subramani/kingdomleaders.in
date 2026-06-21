@@ -27,6 +27,17 @@ export default function RegisterPage() {
   };
 
   const nextStep = () => {
+    if (step === 1) {
+      if (!formData.name.trim() || !formData.email.trim() || !formData.phone.trim() || !formData.age || !formData.city.trim()) {
+        alert('Please fill out all required fields in Step 1.');
+        return;
+      }
+    } else if (step === 2) {
+      if (!formData.churchName.trim() || !formData.denomination.trim()) {
+        alert('Please fill out all required fields in Step 2.');
+        return;
+      }
+    }
     if (step < 3) setStep((s) => s + 1);
   };
 
@@ -60,13 +71,13 @@ export default function RegisterPage() {
           alignItems: 'center',
           zIndex: 50,
           borderBottom: '1px solid var(--border-color)',
-          background: 'rgba(11, 15, 25, 0.85)',
+          background: 'rgba(255, 255, 255, 0.85)',
           backdropFilter: 'blur(16px)',
         }}
       >
         <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', gap: '10px' }}>
-            <span style={{ fontFamily: 'var(--font-heading)', fontSize: '22px', fontWeight: 800, color: 'white', letterSpacing: '0.05em' }}>
+            <span style={{ fontFamily: 'var(--font-heading)', fontSize: '22px', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '0.05em' }}>
               KINGDOM<span style={{ color: 'var(--color-secondary)' }}>LEADERS</span>
             </span>
           </Link>
@@ -90,7 +101,7 @@ export default function RegisterPage() {
                 Your registration has been successfully received. We will send updates to <strong>{formData.email}</strong> or <strong>{formData.phone}</strong> as the event date approaches.
               </p>
               <div style={{ background: 'rgba(255, 255, 255, 0.02)', border: '1px solid var(--border-color)', borderRadius: 'var(--radius-md)', padding: '20px', marginBottom: '40px', textAlign: 'left' }}>
-                <h4 style={{ color: 'white', marginBottom: '12px', fontSize: '15px' }}>Conference Details:</h4>
+                <h4 style={{ color: 'var(--text-primary)', marginBottom: '12px', fontSize: '15px' }}>Conference Details:</h4>
                 <p style={{ fontSize: '13px', margin: '4px 0' }}><span style={{ color: 'var(--text-muted)' }}>Date:</span> Wednesday, 26 August 2026</p>
                 <p style={{ fontSize: '13px', margin: '4px 0' }}><span style={{ color: 'var(--text-muted)' }}>Time:</span> 9:30 AM – 4:00 PM</p>
                 <p style={{ fontSize: '13px', margin: '4px 0' }}><span style={{ color: 'var(--text-muted)' }}>Venue:</span> Palpanabanouthoor C.S.I. Church</p>
@@ -109,7 +120,7 @@ export default function RegisterPage() {
                 <span style={{ color: 'var(--color-secondary)', fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', fontFamily: 'var(--font-mono)' }}>
                   REGISTRATION PORTAL
                 </span>
-                <h2 style={{ fontSize: '28px', color: 'white', marginTop: '8px', marginBottom: '24px' }}>
+                <h2 style={{ fontSize: '28px', color: 'var(--text-primary)', marginTop: '8px', marginBottom: '24px' }}>
                   Register for Kingdom Leaders
                 </h2>
                 
@@ -155,7 +166,7 @@ export default function RegisterPage() {
                 {/* Step 1: Personal Info */}
                 {step === 1 && (
                   <div className="fade-in">
-                    <h3 style={{ fontSize: '18px', color: 'white', marginBottom: '20px', borderBottom: '1px solid var(--border-color)', paddingBottom: '10px' }}>
+                    <h3 style={{ fontSize: '18px', color: 'var(--text-primary)', marginBottom: '20px', borderBottom: '1px solid var(--border-color)', paddingBottom: '10px' }}>
                       Step 1: Personal Details
                     </h3>
                     
@@ -237,7 +248,7 @@ export default function RegisterPage() {
                 {/* Step 2: Church/Ministry */}
                 {step === 2 && (
                   <div className="fade-in">
-                    <h3 style={{ fontSize: '18px', color: 'white', marginBottom: '20px', borderBottom: '1px solid var(--border-color)', paddingBottom: '10px' }}>
+                    <h3 style={{ fontSize: '18px', color: 'var(--text-primary)', marginBottom: '20px', borderBottom: '1px solid var(--border-color)', paddingBottom: '10px' }}>
                       Step 2: Church & Ministry Info
                     </h3>
 
@@ -249,16 +260,15 @@ export default function RegisterPage() {
                         className="form-input"
                         value={formData.role}
                         onChange={handleInputChange}
-                        style={{ appearance: 'none', background: 'rgba(255, 255, 255, 0.03)' }}
                       >
-                        <option value="pastor" style={{ background: '#0b0f19' }}>Pastor / Evangelist</option>
-                        <option value="elder" style={{ background: '#0b0f19' }}>Church Elder / Coordinator</option>
-                        <option value="ce-leader" style={{ background: '#0b0f19' }}>Christian Endeavour Leader</option>
-                        <option value="youth-leader" style={{ background: '#0b0f19' }}>Youth / Student Leader</option>
-                        <option value="sunday-school" style={{ background: '#0b0f19' }}>Sunday School Teacher</option>
-                        <option value="small-group" style={{ background: '#0b0f19' }}>Small Group Facilitator</option>
-                        <option value="volunteer" style={{ background: '#0b0f19' }}>Ministry Volunteer</option>
-                        <option value="emerging-leader" style={{ background: '#0b0f19' }}>Emerging Christian Leader</option>
+                        <option value="pastor">Pastor / Evangelist</option>
+                        <option value="elder">Church Elder / Coordinator</option>
+                        <option value="ce-leader">Christian Endeavour Leader</option>
+                        <option value="youth-leader">Youth / Student Leader</option>
+                        <option value="sunday-school">Sunday School Teacher</option>
+                        <option value="small-group">Small Group Facilitator</option>
+                        <option value="volunteer">Ministry Volunteer</option>
+                        <option value="emerging-leader">Emerging Christian Leader</option>
                       </select>
                     </div>
 
@@ -295,7 +305,7 @@ export default function RegisterPage() {
                 {/* Step 3: Attendance, Food & Expectations */}
                 {step === 3 && (
                   <div className="fade-in">
-                    <h3 style={{ fontSize: '18px', color: 'white', marginBottom: '20px', borderBottom: '1px solid var(--border-color)', paddingBottom: '10px' }}>
+                    <h3 style={{ fontSize: '18px', color: 'var(--text-primary)', marginBottom: '20px', borderBottom: '1px solid var(--border-color)', paddingBottom: '10px' }}>
                       Step 3: Preference & Expectations
                     </h3>
 
@@ -373,7 +383,7 @@ export default function RegisterPage() {
       </main>
 
       {/* Footer */}
-      <footer style={{ padding: '30px 0', backgroundColor: '#070a12', borderTop: '1px solid var(--border-color)', textAlign: 'center', fontSize: '12px', color: 'var(--text-muted)', zIndex: 10 }}>
+      <footer style={{ padding: '30px 0', backgroundColor: 'var(--bg-tertiary)', borderTop: '1px solid var(--border-color)', textAlign: 'center', fontSize: '12px', color: 'var(--text-muted)', zIndex: 10 }}>
         <div className="container">
           <p>© 2026 Kingdom Leaders. All Rights Reserved.</p>
         </div>
