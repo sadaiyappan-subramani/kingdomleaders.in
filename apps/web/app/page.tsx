@@ -158,18 +158,12 @@ export default function LandingPage() {
         }}
       >
         <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', gap: '10px' }}>
-            <span
-              style={{
-                fontFamily: 'var(--font-heading)',
-                fontSize: '22px',
-                fontWeight: 800,
-                color: 'var(--text-primary)',
-                letterSpacing: '0.05em',
-              }}
-            >
-              KINGDOM<span style={{ color: 'var(--color-secondary)' }}>LEADERS</span>
-            </span>
+          <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+            <img
+              src="/logo.png"
+              alt="Kingdom Leaders Logo"
+              style={{ height: '80px', width: 'auto', display: 'block' }}
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -265,10 +259,10 @@ export default function LandingPage() {
           </p>
 
           {/* Scripture Block */}
-          <div 
-            style={{ 
-              maxWidth: '600px', 
-              margin: '0 auto 40px auto', 
+          <div
+            style={{
+              maxWidth: '600px',
+              margin: '0 auto 40px auto',
               background: 'rgba(255, 255, 255, 0.02)',
               borderLeft: '4px solid var(--color-secondary)',
               padding: '16px 24px',
@@ -404,12 +398,12 @@ export default function LandingPage() {
           >
             {/* Speaker 1 */}
             <div className="glass-card" style={{ flex: '1 1 300px', maxWidth: '450px', textAlign: 'center', padding: '40px 32px' }}>
-              <div 
-                style={{ 
-                  width: '120px', 
-                  height: '120px', 
-                  borderRadius: '50%', 
-                  background: 'linear-gradient(135deg, var(--color-primary), var(--color-accent))', 
+              <div
+                style={{
+                  width: '120px',
+                  height: '120px',
+                  borderRadius: '50%',
+                  background: 'linear-gradient(135deg, var(--color-primary), var(--color-accent))',
                   margin: '0 auto 24px auto',
                   display: 'flex',
                   alignItems: 'center',
@@ -433,12 +427,12 @@ export default function LandingPage() {
 
             {/* Speaker 2 */}
             <div className="glass-card" style={{ flex: '1 1 300px', maxWidth: '450px', textAlign: 'center', padding: '40px 32px' }}>
-              <div 
-                style={{ 
-                  width: '120px', 
-                  height: '120px', 
-                  borderRadius: '50%', 
-                  background: 'linear-gradient(135deg, var(--color-primary), var(--color-accent-blue))', 
+              <div
+                style={{
+                  width: '120px',
+                  height: '120px',
+                  borderRadius: '50%',
+                  background: 'linear-gradient(135deg, var(--color-primary), var(--color-accent-blue))',
                   margin: '0 auto 24px auto',
                   display: 'flex',
                   alignItems: 'center',
@@ -502,9 +496,9 @@ export default function LandingPage() {
             ].map((highlight, index) => (
               <div className="feature-card" key={index}>
                 <div className="feature-card-img-container">
-                  <img 
-                    src={highlight.image} 
-                    alt={highlight.title} 
+                  <img
+                    src={highlight.image}
+                    alt={highlight.title}
                     className="feature-card-img"
                   />
                 </div>
@@ -559,9 +553,9 @@ export default function LandingPage() {
             ].map((role, idx) => (
               <div className="audience-card" key={idx}>
                 <div className="audience-card-avatar">
-                  <img 
-                    src={role.image} 
-                    alt={role.name} 
+                  <img
+                    src={role.image}
+                    alt={role.name}
                     className="audience-card-img"
                   />
                 </div>
@@ -656,7 +650,7 @@ export default function LandingPage() {
             150 Leaders
           </h2>
           <h3 style={{ fontSize: '24px', color: 'var(--text-primary)', marginBottom: '32px' }}>Seats Available</h3>
-          
+
           <div
             className="glass-card"
             style={{
@@ -700,10 +694,14 @@ export default function LandingPage() {
           >
             {/* Branding Column */}
             <div>
-              <span style={{ fontFamily: 'var(--font-heading)', fontSize: '20px', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '0.05em' }}>
-                KINGDOM<span style={{ color: 'var(--color-secondary)' }}>LEADERS</span>
-              </span>
-              <p style={{ fontSize: '13px', marginTop: '16px', lineHeight: 1.6 }}>
+              <Link href="/" style={{ display: 'inline-flex', alignItems: 'center', textDecoration: 'none', marginBottom: '16px' }}>
+                <img
+                  src="/logo.png"
+                  alt="Kingdom Leaders Logo"
+                  style={{ height: '56px', width: 'auto', display: 'block' }}
+                />
+              </Link>
+              <p style={{ fontSize: '13px', lineHeight: 1.6 }}>
                 Dedicated to inspiring, equipping, and connecting Christian leaders for faithful and impactful ministry.
               </p>
             </div>
@@ -741,17 +739,17 @@ export default function LandingPage() {
                 <li><a href="#speakers" onClick={(e) => handleNavClick(e, 'speakers')} style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>Speakers</a></li>
                 <li><a href="#highlights" onClick={(e) => handleNavClick(e, 'highlights')} style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>Highlights</a></li>
                 <li>
-                  <button 
-                    onClick={() => setIsRegisterModalOpen(true)} 
-                    style={{ 
-                      background: 'none', 
-                      border: 'none', 
-                      cursor: 'pointer', 
-                      color: 'var(--text-secondary)', 
-                      textDecoration: 'none', 
-                      padding: 0, 
-                      font: 'inherit', 
-                      textAlign: 'left' 
+                  <button
+                    onClick={() => setIsRegisterModalOpen(true)}
+                    style={{
+                      background: 'none',
+                      border: 'none',
+                      cursor: 'pointer',
+                      color: 'var(--text-secondary)',
+                      textDecoration: 'none',
+                      padding: 0,
+                      font: 'inherit',
+                      textAlign: 'left'
                     }}
                   >
                     Register Now
@@ -784,7 +782,7 @@ export default function LandingPage() {
 
       {/* Registration Modal Overlay */}
       {isRegisterModalOpen && (
-        <div 
+        <div
           style={{
             position: 'fixed',
             top: 0,
@@ -804,7 +802,7 @@ export default function LandingPage() {
           className="fade-in"
         >
           {/* Modal Card */}
-          <div 
+          <div
             style={{
               width: '100%',
               maxWidth: '600px',
@@ -820,7 +818,7 @@ export default function LandingPage() {
             onClick={(e) => e.stopPropagation()} // Prevent closing modal when clicking card itself
           >
             {/* Close Button */}
-            <button 
+            <button
               onClick={closeRegisterModal}
               style={{
                 position: 'absolute',
@@ -868,7 +866,7 @@ export default function LandingPage() {
             ) : (
               /* Multi-step Form */
               <div className="fade-in">
-                
+
                 {/* Header & Steps Indicator */}
                 <div style={{ marginBottom: '32px', paddingRight: '24px' }}>
                   <span style={{ color: 'var(--color-secondary)', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', fontFamily: 'var(--font-mono)', letterSpacing: '0.05em' }}>
@@ -877,7 +875,7 @@ export default function LandingPage() {
                   <h2 style={{ fontSize: '24px', color: 'var(--text-primary)', marginTop: '6px', marginBottom: '20px' }}>
                     Register for Kingdom Leaders
                   </h2>
-                  
+
                   {/* Progress Bar */}
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                     {[1, 2, 3].map((s) => (
@@ -916,14 +914,14 @@ export default function LandingPage() {
 
                 {/* Form Element */}
                 <form onSubmit={handleRegisterSubmit}>
-                  
+
                   {/* Step 1: Personal Info */}
                   {registerStep === 1 && (
                     <div className="fade-in">
                       <h3 style={{ fontSize: '16px', color: 'var(--text-primary)', marginBottom: '16px', borderBottom: '1px solid var(--border-color)', paddingBottom: '8px' }}>
                         Step 1: Personal Details
                       </h3>
-                      
+
                       <div className="form-group">
                         <label className="form-label" htmlFor="modal-name">Full Name</label>
                         <input
