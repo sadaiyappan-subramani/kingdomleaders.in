@@ -1,0 +1,14 @@
+{
+  "name": "kingdomleaders-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --filter web dev",
+    "build": "pnpm --recursive build",
+    "start": "pnpm --filter web start",
+    "lint": "pnpm --recursive lint"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
+}
