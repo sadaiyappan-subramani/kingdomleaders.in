@@ -21,6 +21,7 @@ export default function LandingPage() {
     churchName: '',
     denomination: '',
     foodPreference: 'veg',
+    accommodationRequired: 'no',
     expectations: '',
     agreeToTime: 'yes',
   });
@@ -125,6 +126,7 @@ export default function LandingPage() {
       churchName: '',
       denomination: '',
       foodPreference: 'veg',
+      accommodationRequired: 'no',
       expectations: '',
       agreeToTime: 'yes',
     });
@@ -298,8 +300,8 @@ export default function LandingPage() {
           >
             <div className="glass-card" style={{ textAlign: 'left' }}>
               <div style={{ color: 'var(--text-muted)', fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', fontFamily: 'var(--font-mono)', marginBottom: '8px' }}>Date</div>
-              <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '4px' }}>Wed, 26 Aug 2026</h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>Wednesday Gathering</p>
+              <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '4px' }}>Sat, 22 Aug 2026</h3>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>Saturday Gathering</p>
             </div>
 
             <div className="glass-card" style={{ textAlign: 'left' }}>
@@ -310,8 +312,14 @@ export default function LandingPage() {
 
             <div className="glass-card" style={{ textAlign: 'left' }}>
               <div style={{ color: 'var(--text-muted)', fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', fontFamily: 'var(--font-mono)', marginBottom: '8px' }}>Capacity</div>
-              <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '4px' }}>Limited to 150</h3>
+              <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '4px' }}>Limited to 100</h3>
               <p style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>Exclusive Leadership Seats</p>
+            </div>
+
+            <div className="glass-card" style={{ textAlign: 'left' }}>
+              <div style={{ color: 'var(--text-muted)', fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', fontFamily: 'var(--font-mono)', marginBottom: '8px' }}>Hospitality</div>
+              <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '4px' }}>Food & Lodging</h3>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>Accommodation & Food Provided</p>
             </div>
 
             <div className="glass-card" style={{ textAlign: 'left' }}>
@@ -647,7 +655,7 @@ export default function LandingPage() {
               letterSpacing: '0.1em',
             }}
           >
-            150 Leaders
+            100 Leaders
           </h2>
           <h3 style={{ fontSize: '24px', color: 'var(--text-primary)', marginBottom: '32px' }}>Seats Available</h3>
 
@@ -663,7 +671,7 @@ export default function LandingPage() {
           >
             <h3 style={{ fontSize: '24px', color: 'var(--text-primary)', marginBottom: '12px' }}>Be Equipped. Be Empowered. Be a Kingdom Leader.</h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: '15px', marginBottom: '24px' }}>
-              Seats are limited to only 150 leaders. Early registration is highly recommended to secure your participation in this exclusive leadership gathering.
+              Seats are limited to only 100 leaders. Early registration is highly recommended to secure your participation in this exclusive leadership gathering. Also, food and accommodation are provided for all registered participants.
             </p>
             <button onClick={() => setIsRegisterModalOpen(true)} className="btn btn-gold" style={{ width: '220px' }}>
               Register Now
@@ -710,7 +718,7 @@ export default function LandingPage() {
             <div>
               <h4 style={{ color: 'var(--text-primary)', fontSize: '14px', marginBottom: '16px', textTransform: 'uppercase', fontFamily: 'var(--font-mono)' }}>Event Details</h4>
               <p style={{ fontSize: '13px', marginBottom: '10px' }}>
-                📅 Wednesday, 26 August 2026
+                📅 Saturday, 22 August 2026
               </p>
               <p style={{ fontSize: '13px', marginBottom: '10px' }}>
                 🕘 9:30 AM – 4:00 PM
@@ -854,10 +862,11 @@ export default function LandingPage() {
                 </p>
                 <div style={{ background: 'var(--bg-tertiary)', border: '1px solid var(--border-color)', borderRadius: 'var(--radius-md)', padding: '16px', marginBottom: '32px', textAlign: 'left' }}>
                   <h4 style={{ color: 'var(--text-primary)', marginBottom: '8px', fontSize: '14px' }}>Details Summary:</h4>
-                  <p style={{ fontSize: '12px', margin: '4px 0' }}><span style={{ color: 'var(--text-muted)' }}>Date:</span> Wednesday, 26 August 2026</p>
+                  <p style={{ fontSize: '12px', margin: '4px 0' }}><span style={{ color: 'var(--text-muted)' }}>Date:</span> Saturday, 22 August 2026</p>
                   <p style={{ fontSize: '12px', margin: '4px 0' }}><span style={{ color: 'var(--text-muted)' }}>Time:</span> 9:30 AM – 4:00 PM</p>
                   <p style={{ fontSize: '12px', margin: '4px 0' }}><span style={{ color: 'var(--text-muted)' }}>Venue:</span> Palpanabanouthoor C.S.I. Church</p>
                   <p style={{ fontSize: '12px', margin: '4px 0' }}><span style={{ color: 'var(--text-muted)' }}>Lunch:</span> {registerFormData.foodPreference.toUpperCase()}</p>
+                  <p style={{ fontSize: '12px', margin: '4px 0' }}><span style={{ color: 'var(--text-muted)' }}>Accommodation:</span> {registerFormData.accommodationRequired === 'yes' ? 'REQUIRED' : 'NOT REQUIRED'}</p>
                 </div>
                 <button onClick={closeRegisterModal} className="btn btn-primary">
                   Close Window
@@ -1072,6 +1081,20 @@ export default function LandingPage() {
                         >
                           <option value="veg">Vegetarian</option>
                           <option value="non-veg">Non-Vegetarian</option>
+                        </select>
+                      </div>
+
+                      <div className="form-group">
+                        <label className="form-label" htmlFor="modal-accommodationRequired">Accommodation Required?</label>
+                        <select
+                          id="modal-accommodationRequired"
+                          name="accommodationRequired"
+                          className="form-input"
+                          value={registerFormData.accommodationRequired}
+                          onChange={handleRegisterInputChange}
+                        >
+                          <option value="no">No, I do not need accommodation.</option>
+                          <option value="yes">Yes, I require accommodation.</option>
                         </select>
                       </div>
 
