@@ -18,6 +18,7 @@ export default function AdminPage() {
     totalPages: 1,
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [isExporting, setIsExporting] = useState(false);
   const [selectedReg, setSelectedReg] = useState<any | null>(null);
 
   // Check login state on mount
@@ -65,6 +66,67 @@ export default function AdminPage() {
       setIsLoading(false);
     }
   }, []);
+
+  const handleExportCSV = async () => {
+    setIsExporting(true);
+    try {
+      const response = await fetch(`/api/registrations?page=1&limit=100000`);
+      const result = await response.json();
+      
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || 'Failed to fetch registrations for export');
+      }
+      
+      const allData = result.data || [];
+      if (allData.length === 0) {
+        toast.info('No registrations to export');
+        return;
+      }
+
+      const headers = [
+        'ID', 'Name', 'Email', 'Phone', 'Age', 'City', 'Role', 
+        'Church Name', 'Denomination', 'Food Preference', 
+        'Accommodation Required', 'Expectations', 'Agree To Time', 'Created At'
+      ];
+
+      const csvRows = [
+        headers.join(','),
+        ...allData.map((row: any) => [
+          row.id,
+          `"${(row.name || '').replace(/"/g, '""')}"`,
+          `"${(row.email || '').replace(/"/g, '""')}"`,
+          `"${(row.phone || '').replace(/"/g, '""')}"`,
+          `"${(row.age || '').replace(/"/g, '""')}"`,
+          `"${(row.city || '').replace(/"/g, '""')}"`,
+          `"${(row.role || '').replace(/"/g, '""')}"`,
+          `"${(row.churchName || '').replace(/"/g, '""')}"`,
+          `"${(row.denomination || '').replace(/"/g, '""')}"`,
+          `"${(row.foodPreference || '').replace(/"/g, '""')}"`,
+          `"${(row.accommodationRequired || '').replace(/"/g, '""')}"`,
+          `"${(row.expectations || '').replace(/"/g, '""')}"`,
+          `"${(row.agreeToTime || '').replace(/"/g, '""')}"`,
+          `"${(row.createdAt || '').replace(/"/g, '""')}"`
+        ].join(','))
+      ];
+
+      const csvContent = '\uFEFF' + csvRows.join('\n');
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.setAttribute('href', url);
+      link.setAttribute('download', `kingdom_leaders_registrations_${new Date().toISOString().split('T')[0]}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      toast.success('Successfully exported registrations to CSV');
+    } catch (err: any) {
+      console.error(err);
+      toast.error(err.message || 'Error occurred during export');
+    } finally {
+      setIsExporting(false);
+    }
+  };
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -162,9 +224,14 @@ export default function AdminPage() {
               <h3 style={{ fontSize: '18px', fontWeight: 700 }}>Registered Delegates</h3>
               <p style={{ color: 'var(--text-secondary)', fontSize: '13px', marginTop: '4px' }}>Click any row to view full details and expectations</p>
             </div>
-            <button onClick={() => fetchRegistrations(meta.page)} className="btn btn-secondary" style={{ padding: '8px 16px', fontSize: '13px' }} disabled={isLoading}>
-              {isLoading ? 'Refreshing...' : 'Refresh'}
-            </button>
+            <div style={{ display: 'flex', gap: '10px' }}>
+              <button onClick={handleExportCSV} className="btn btn-gold" style={{ padding: '8px 16px', fontSize: '13px' }} disabled={isExporting || isLoading}>
+                {isExporting ? 'Exporting...' : 'Export to Excel'}
+              </button>
+              <button onClick={() => fetchRegistrations(meta.page)} className="btn btn-secondary" style={{ padding: '8px 16px', fontSize: '13px' }} disabled={isLoading}>
+                {isLoading ? 'Refreshing...' : 'Refresh'}
+              </button>
+            </div>
           </div>
 
           <div style={{ overflowX: 'auto' }}>
