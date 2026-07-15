@@ -4,9 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "pnpm --filter web dev",
+    "dev:api": "pnpm --filter api start:dev",
     "build": "pnpm --recursive build",
     "start": "pnpm --filter web start",
-    "lint": "pnpm --recursive lint"
+    "lint": "pnpm --recursive lint",
+    "db:migrate": "pnpm --filter api exec prisma migrate dev",
+    "db:generate": "pnpm --filter api exec prisma generate"
   },
   "devDependencies": {
     "typescript": "^5.4.5"
