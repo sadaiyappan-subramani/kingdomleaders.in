@@ -7,6 +7,11 @@ export const metadata: Metadata = {
   description: 'Kingdom Leaders 2026 is a one-day leadership conference dedicated to inspiring, equipping, and connecting Christian leaders for faithful and impactful ministry.',
   keywords: ['Kingdom Leaders 2026', 'Palpanabanouthoor C.S.I. Church', 'Christian Endeavour', 'Christian Leadership Conference', 'Pastors', 'Church Leaders'],
   authors: [{ name: 'Christian Endeavour Social Concern Team' }],
+  icons: {
+    icon: '/logo.png',
+    shortcut: '/logo.png',
+    apple: '/logo.png',
+  },
 };
 
 export const viewport = {
