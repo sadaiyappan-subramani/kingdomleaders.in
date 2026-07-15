@@ -35,4 +35,17 @@ export class RegistrationsService {
       },
     };
   }
+
+  async update(id: number, data: any) {
+    return this.prisma.registration.update({
+      where: { id },
+      data,
+    });
+  }
+
+  async remove(id: number) {
+    return this.prisma.registration.delete({
+      where: { id },
+    });
+  }
 }

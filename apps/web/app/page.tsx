@@ -37,6 +37,25 @@ export default function LandingPage() {
     }
   };
 
+  const [totalRegistrations, setTotalRegistrations] = useState(0);
+
+  useEffect(() => {
+    const fetchCount = async () => {
+      try {
+        const res = await fetch('/api/registrations?page=1&limit=1');
+        const json = await res.json();
+        if (res.ok && json.success && json.meta) {
+          setTotalRegistrations(json.meta.total || 0);
+        }
+      } catch (err) {
+        console.error('Failed to fetch registration count:', err);
+      }
+    };
+    fetchCount();
+  }, [registerSubmitted]);
+
+  const seatsLeft = Math.max(100 - totalRegistrations, 0);
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -312,8 +331,8 @@ export default function LandingPage() {
 
             <div className="glass-card" style={{ textAlign: 'left' }}>
               <div style={{ color: 'var(--text-muted)', fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', fontFamily: 'var(--font-mono)', marginBottom: '8px' }}>Capacity</div>
-              <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '4px' }}>Limited to 100</h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>Exclusive Leadership Seats</p>
+              <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '4px' }}>{seatsLeft} Seats Left</h3>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>Out of 100 capacity</p>
             </div>
 
             <div className="glass-card" style={{ textAlign: 'left' }}>
@@ -655,9 +674,9 @@ export default function LandingPage() {
               letterSpacing: '0.1em',
             }}
           >
-            100 Leaders
+            {seatsLeft} Seats Left
           </h2>
-          <h3 style={{ fontSize: '24px', color: 'var(--text-primary)', marginBottom: '32px' }}>Seats Available</h3>
+          <h3 style={{ fontSize: '24px', color: 'var(--text-primary)', marginBottom: '32px' }}>Available out of 100</h3>
 
           <div
             className="glass-card"
@@ -671,7 +690,7 @@ export default function LandingPage() {
           >
             <h3 style={{ fontSize: '24px', color: 'var(--text-primary)', marginBottom: '12px' }}>Be Equipped. Be Empowered. Be a Kingdom Leader.</h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: '15px', marginBottom: '24px' }}>
-              Seats are limited to only 100 leaders. Early registration is highly recommended to secure your participation in this exclusive leadership gathering. Also, food and accommodation are provided for all registered participants.
+              Seats are limited to only 100 leaders (only {seatsLeft} remaining!). Early registration is highly recommended to secure your participation. Food and accommodation are provided for all registered participants. (Registration Fee: ₹100, payable at the venue).
             </p>
             <button onClick={() => setIsRegisterModalOpen(true)} className="btn btn-gold" style={{ width: '220px' }}>
               Register Now
@@ -867,6 +886,7 @@ export default function LandingPage() {
                   <p style={{ fontSize: '12px', margin: '4px 0' }}><span style={{ color: 'var(--text-muted)' }}>Venue:</span> Palpanabanouthoor C.S.I. Church</p>
                   <p style={{ fontSize: '12px', margin: '4px 0' }}><span style={{ color: 'var(--text-muted)' }}>Lunch:</span> {registerFormData.foodPreference.toUpperCase()}</p>
                   <p style={{ fontSize: '12px', margin: '4px 0' }}><span style={{ color: 'var(--text-muted)' }}>Accommodation:</span> {registerFormData.accommodationRequired === 'yes' ? 'REQUIRED' : 'NOT REQUIRED'}</p>
+                  <p style={{ fontSize: '12px', margin: '4px 0' }}><span style={{ color: 'var(--text-muted)' }}>Registration Fee:</span> ₹100 (payable at the venue)</p>
                 </div>
                 <button onClick={closeRegisterModal} className="btn btn-primary">
                   Close Window
@@ -881,9 +901,12 @@ export default function LandingPage() {
                   <span style={{ color: 'var(--color-secondary)', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', fontFamily: 'var(--font-mono)', letterSpacing: '0.05em' }}>
                     REGISTRATION PORTAL
                   </span>
-                  <h2 style={{ fontSize: '24px', color: 'var(--text-primary)', marginTop: '6px', marginBottom: '20px' }}>
+                  <h2 style={{ fontSize: '24px', color: 'var(--text-primary)', marginTop: '6px', marginBottom: '6px' }}>
                     Register for Kingdom Leaders
                   </h2>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '14px', marginBottom: '20px' }}>
+                    Registration Fee: <strong>₹100</strong> (payable at the venue)
+                  </p>
 
                   {/* Progress Bar */}
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>

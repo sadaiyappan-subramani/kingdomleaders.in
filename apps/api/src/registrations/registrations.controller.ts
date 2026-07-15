@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
 import { CreateRegistrationDto } from './dto/create-registration.dto';
 import { RegistrationsService } from './registrations.service';
 
@@ -22,5 +22,17 @@ export class RegistrationsController {
       Number(limit) || 15,
     );
     return { success: true, ...result };
+  }
+
+  @Patch(':id')
+  async update(@Param('id') id: string, @Body() data: any) {
+    const registration = await this.registrationsService.update(Number(id), data);
+    return { success: true, data: registration };
+  }
+
+  @Delete(':id')
+  async remove(@Param('id') id: string) {
+    await this.registrationsService.remove(Number(id));
+    return { success: true };
   }
 }
