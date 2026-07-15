@@ -1,3 +1,11 @@
+import * as dotenv from 'dotenv';
+import * as path from 'path';
+
+// Load .env files from monorepo root and api directory
+dotenv.config({ path: path.join(__dirname, '../../.env') });
+dotenv.config({ path: path.join(__dirname, '../.env') });
+dotenv.config({ path: path.join(process.cwd(), '.env') });
+
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
