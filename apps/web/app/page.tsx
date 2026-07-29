@@ -952,6 +952,14 @@ export default function LandingPage() {
       }}
     >
       <p>© 2026 Kingdom Leaders. All Rights Reserved.</p>
+      <a
+        href="https://santhoshs.co.in/"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}
+      >
+        Developed by Santhosh Subramani
+      </a>
       <div style={{ display: 'flex', gap: '16px' }}>
         <Link href="#" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>Terms & Conditions</Link>
         <span>|</span>
