@@ -543,7 +543,61 @@ export default function LandingPage() {
               flexWrap: 'wrap',
             }}
           >
+            {/* Presider */}
+            <div className="glass-card" style={{ flex: '1 1 300px', maxWidth: '450px', textAlign: 'center', padding: '40px 32px' }}>
+              <img
+                src="/images/speaker_samuel.png"
+                alt="Rev. M. Samuel"
+                style={{
+                  width: '120px',
+                  height: '120px',
+                  borderRadius: '50%',
+                  margin: '0 auto 24px auto',
+                  display: 'block',
+                  objectFit: 'cover',
+                  objectPosition: 'center',
+                  boxShadow: '0 8px 24px rgba(8, 145, 178, 0.2)',
+                }}
+              />
+              <div style={{ color: 'var(--color-primary)', fontFamily: 'var(--font-mono)', fontSize: '13px', fontWeight: 600, marginBottom: '20px' }}>
+                PRESIDED BY
+              </div>
+              <h3 style={{ fontSize: '24px', color: 'var(--text-primary)', marginBottom: '8px' }}>Rev. M. Samuel, B.A., B.D.</h3>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: 1.6 }}>
+                Presbyter, Palpanabanputhoor C.S.I.
+              </p>
+            </div>
+
             {/* Speaker 1 */}
+            <div className="glass-card" style={{ flex: '1 1 300px', maxWidth: '450px', textAlign: 'center', padding: '40px 32px' }}>
+              <div
+                style={{
+                  width: '120px',
+                  height: '120px',
+                  borderRadius: '50%',
+                  margin: '0 auto 24px auto',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'linear-gradient(135deg, var(--color-primary), var(--color-accent))',
+                  color: 'white',
+                  fontSize: '36px',
+                  fontWeight: 800,
+                  boxShadow: '0 8px 24px rgba(79, 70, 229, 0.2)',
+                }}
+              >
+                CJ
+              </div>
+              <div style={{ color: 'var(--color-secondary)', fontFamily: 'var(--font-mono)', fontSize: '13px', fontWeight: 600, marginBottom: '20px' }}>
+                SPEAKER
+              </div>
+              <h3 style={{ fontSize: '24px', color: 'var(--text-primary)', marginBottom: '8px' }}>Dr. Christy Jacob</h3>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: 1.6 }}>
+                Formerly Professor at WCC, Nagercoil
+              </p>
+            </div>
+
+            {/* Speaker 2 */}
             <div className="glass-card" style={{ flex: '1 1 300px', maxWidth: '450px', textAlign: 'center', padding: '40px 32px' }}>
               <img
                 src="/images/speaker_rajesh_duthie.png"
@@ -556,40 +610,15 @@ export default function LandingPage() {
                   display: 'block',
                   objectFit: 'cover',
                   objectPosition: 'center',
-                  boxShadow: '0 8px 24px rgba(79, 70, 229, 0.2)',
-                }}
-              />
-              <h3 style={{ fontSize: '24px', color: 'var(--text-primary)', marginBottom: '8px' }}>Dr. Rajesh Duthie</h3>
-              <div style={{ color: 'var(--color-secondary)', fontFamily: 'var(--font-mono)', fontSize: '13px', fontWeight: 600, marginBottom: '20px' }}>
-                LEADERSHIP COACH
-              </div>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: 1.6 }}>
-                Bible Teacher | Leadership Coach | Ministry Consultant
-              </p>
-            </div>
-
-            {/* Speaker 2 */}
-            <div className="glass-card" style={{ flex: '1 1 300px', maxWidth: '450px', textAlign: 'center', padding: '40px 32px' }}>
-              <img
-                src="/images/speaker_samuel.png"
-                alt="Rev. Samuel"
-                style={{
-                  width: '120px',
-                  height: '120px',
-                  borderRadius: '50%',
-                  margin: '0 auto 24px auto',
-                  display: 'block',
-                  objectFit: 'cover',
-                  objectPosition: 'center',
                   boxShadow: '0 8px 24px rgba(8, 145, 178, 0.2)',
                 }}
               />
-              <h3 style={{ fontSize: '24px', color: 'var(--text-primary)', marginBottom: '8px' }}>Rev. Samuel</h3>
               <div style={{ color: 'var(--color-primary)', fontFamily: 'var(--font-mono)', fontSize: '13px', fontWeight: 600, marginBottom: '20px' }}>
-                GUEST SPEAKER
+                SPEAKER
               </div>
+              <h3 style={{ fontSize: '24px', color: 'var(--text-primary)', marginBottom: '8px' }}>Dr. Rajesh Duthie</h3>
               <p style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: 1.6 }}>
-                Ministering God&apos;s Word and equipping the church for faithful service.
+                Open Gates Life Foundation, Pune
               </p>
             </div>
           </div>
