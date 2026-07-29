@@ -21,5 +21,9 @@ model Registration {
   accommodationRequired String
   expectations          String?
   agreeToTime           String
+  razorpayPaymentId     String?  @unique
+  razorpayOrderId       String?  @unique
+  paymentStatus         String   @default("PAID")
+  paidAt                DateTime @default(now())
   createdAt             DateTime @default(now())
 }

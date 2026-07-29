@@ -120,11 +120,18 @@ export default function LandingPage() {
     };
   }, []);
 
-  const handleRegisterSubmit = async (formData: typeof registerFormData, rzpPaymentId: string): Promise<void> => {
+  const handleRegisterSubmit = async (
+    formData: typeof registerFormData,
+    payment: { id: string; orderId: string },
+  ): Promise<void> => {
     const response = await fetch('/api/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
+      body: JSON.stringify({
+        ...formData,
+        razorpayPaymentId: payment.id,
+        razorpayOrderId: payment.orderId,
+      }),
     });
     const result = await response.json();
     if (!response.ok || !result.success) {
@@ -204,7 +211,10 @@ export default function LandingPage() {
             }
 
             // Step 4: Save registration to database
-            await handleRegisterSubmit(registerFormData, response.razorpay_payment_id);
+            await handleRegisterSubmit(registerFormData, {
+              id: response.razorpay_payment_id,
+              orderId: response.razorpay_order_id,
+            });
 
             setPaymentId(response.razorpay_payment_id);
             toast.success('Payment successful! Registration confirmed.');
@@ -535,59 +545,51 @@ export default function LandingPage() {
           >
             {/* Speaker 1 */}
             <div className="glass-card" style={{ flex: '1 1 300px', maxWidth: '450px', textAlign: 'center', padding: '40px 32px' }}>
-              <div
+              <img
+                src="/images/speaker_rajesh_duthie.png"
+                alt="Dr. Rajesh Duthie speaking at a conference"
                 style={{
                   width: '120px',
                   height: '120px',
                   borderRadius: '50%',
-                  background: 'linear-gradient(135deg, var(--color-primary), var(--color-accent))',
                   margin: '0 auto 24px auto',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '36px',
-                  fontWeight: 800,
-                  color: 'white',
-                  boxShadow: '0 8px 24px rgba(79, 70, 229, 0.2)'
+                  display: 'block',
+                  objectFit: 'cover',
+                  objectPosition: 'center',
+                  boxShadow: '0 8px 24px rgba(79, 70, 229, 0.2)',
                 }}
-              >
-                CJ
-              </div>
-              <h3 style={{ fontSize: '24px', color: 'var(--text-primary)', marginBottom: '8px' }}>Dr. Christy Jacob</h3>
+              />
+              <h3 style={{ fontSize: '24px', color: 'var(--text-primary)', marginBottom: '8px' }}>Dr. Rajesh Duthie</h3>
               <div style={{ color: 'var(--color-secondary)', fontFamily: 'var(--font-mono)', fontSize: '13px', fontWeight: 600, marginBottom: '20px' }}>
-                LEADERSHIP TRAINER
+                LEADERSHIP COACH
               </div>
               <p style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: 1.6 }}>
-                Leadership Trainer | Ministry Mentor | Inspirational Speaker
+                Bible Teacher | Leadership Coach | Ministry Consultant
               </p>
             </div>
 
             {/* Speaker 2 */}
             <div className="glass-card" style={{ flex: '1 1 300px', maxWidth: '450px', textAlign: 'center', padding: '40px 32px' }}>
-              <div
+              <img
+                src="/images/speaker_samuel.png"
+                alt="Rev. Samuel"
                 style={{
                   width: '120px',
                   height: '120px',
                   borderRadius: '50%',
-                  background: 'linear-gradient(135deg, var(--color-primary), var(--color-accent-blue))',
                   margin: '0 auto 24px auto',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '36px',
-                  fontWeight: 800,
-                  color: 'white',
-                  boxShadow: '0 8px 24px rgba(8, 145, 178, 0.2)'
+                  display: 'block',
+                  objectFit: 'cover',
+                  objectPosition: 'center',
+                  boxShadow: '0 8px 24px rgba(8, 145, 178, 0.2)',
                 }}
-              >
-                RD
-              </div>
-              <h3 style={{ fontSize: '24px', color: 'var(--text-primary)', marginBottom: '8px' }}>Dr. Rajesh Duthie</h3>
+              />
+              <h3 style={{ fontSize: '24px', color: 'var(--text-primary)', marginBottom: '8px' }}>Rev. Samuel</h3>
               <div style={{ color: 'var(--color-primary)', fontFamily: 'var(--font-mono)', fontSize: '13px', fontWeight: 600, marginBottom: '20px' }}>
-                LEADERSHIP COACH
+                GUEST SPEAKER
               </div>
               <p style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: 1.6 }}>
-                Bible Teacher | Leadership Coach | Ministry Consultant
+                Ministering God&apos;s Word and equipping the church for faithful service.
               </p>
             </div>
           </div>

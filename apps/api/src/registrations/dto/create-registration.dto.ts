@@ -48,4 +48,12 @@ export class CreateRegistrationDto {
   @IsString()
   @IsNotEmpty()
   agreeToTime: string;
+
+  @IsString()
+  @IsNotEmpty()
+  razorpayPaymentId: string;
+
+  @IsString()
+  @IsNotEmpty()
+  razorpayOrderId: string;
 }
