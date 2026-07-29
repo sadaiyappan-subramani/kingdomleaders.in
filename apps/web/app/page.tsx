@@ -899,6 +899,19 @@ export default function LandingPage() {
         </p>
       </div>
 
+      {/* Contact Details Column */}
+      <div>
+        <h4 style={{ color: 'var(--text-primary)', fontSize: '14px', marginBottom: '16px', textTransform: 'uppercase', fontFamily: 'var(--font-mono)' }}>Contact Details</h4>
+        <p style={{ fontSize: '13px', marginBottom: '10px' }}>
+          Bro. S. Vilson<br />
+          <a href="tel:+916369340289" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>+91 63693 40289</a>
+        </p>
+        <p style={{ fontSize: '13px', margin: 0 }}>
+          Bro. L. Nirmal<br />
+          <a href="tel:+919445215672" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>+91 94452 15672</a>
+        </p>
+      </div>
+
       {/* Navigation Column */}
       <div>
         <h4 style={{ color: 'var(--text-primary)', fontSize: '14px', marginBottom: '16px', textTransform: 'uppercase', fontFamily: 'var(--font-mono)' }}>Links</h4>
